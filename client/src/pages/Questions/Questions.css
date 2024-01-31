@@ -1,0 +1,11 @@
+.question-section {
+    margin: 80px 0px;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
