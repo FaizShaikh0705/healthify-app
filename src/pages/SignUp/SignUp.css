@@ -1,0 +1,37 @@
+
+.auth{
+    background-color: #3B4131;
+    height: 100vh;
+}
+
+
+h3 { 
+    width:100%; 
+    text-align:center; 
+    border-bottom: 1px solid #FFF6DB; 
+    line-height:0.1em; 
+    margin:10px 0 20px; 
+    font-size: 14px;
+} 
+
+h3 span { 
+    background:#FFF6DB;
+    padding:0 10px; 
+}
+
+
+.authentication .btn {
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 19px;
+    cursor: pointer;
+    background-color: #BBAEFE;
+}
+
+.btn-google {
+    color: #545454;
+    background-color: #FFF6DB;
+    box-shadow: 0 1px 2px 1px #FFF6DB
+}
+
