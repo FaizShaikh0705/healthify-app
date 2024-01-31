@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <>
-            <nav className="navbar navbar-light fixed-top bg-border-btm">
+            <nav className="navbar navbar-light fixed-top bg-border-btm bg-blue">
                 <div className="container-fluid">
                     <div className="text-center Usericon">
                         <img src={logo} width="260" alt="icon" />

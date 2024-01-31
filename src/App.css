@@ -108,6 +108,11 @@ a {
   border-bottom: 3px solid #FFF6DB;
 }
 
+.bg-border-top {
+  /* background: #111213; */
+  border-top: 3px solid #FFF6DB;
+}
+
 a.nav-drop-ref {
   text-decoration: none;
   cursor: pointer;
