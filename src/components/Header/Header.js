@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Header.css';
 import logo from './hlogo.jpeg';
 import fire from '../../config/Fire';
