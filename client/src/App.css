@@ -75,7 +75,7 @@ li {
 
 a {
   color: #444;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: 0.3s;
   cursor: pointer;
 }

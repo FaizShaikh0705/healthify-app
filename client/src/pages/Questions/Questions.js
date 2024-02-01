@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-// import { LinkContainer } from 'react-router-bootstrap';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import PersonalQuestions from './PersonalQuestions';
 import BodyMeasures from './BodyMeasures';
 import HealthIssues from './HealthIssues';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
+import { useSelector } from "react-redux";
 import './Questions.css'
 
 const Questions = () => {
@@ -30,6 +31,9 @@ const Questions = () => {
         }
     };
 
+
+    const currentUser = useSelector((state) => state.user);
+
     return (
         <>
             <Header />
@@ -37,9 +41,15 @@ const Questions = () => {
                 <Container>
                     <Row>
                         <Col lg={12}>
-                            <PersonalQuestions className={currentStep === 'personal' ? 'visible' : 'hidden'} onNext={handleNext} />
-                            <BodyMeasures className={currentStep === 'body' ? 'visible' : 'hidden'} onNext={handleNext} onBack={handleBack} />
-                            <HealthIssues className={currentStep === 'health' ? 'visible' : 'hidden'} onBack={handleBack} />
+                            {currentUser && currentUser.currentUser ? (
+                                <>
+                                    <PersonalQuestions className={currentStep === 'personal' ? 'visible' : 'hidden'} onNext={handleNext} />
+                                    <BodyMeasures className={currentStep === 'body' ? 'visible' : 'hidden'} onNext={handleNext} onBack={handleBack} />
+                                    <HealthIssues className={currentStep === 'health' ? 'visible' : 'hidden'} onBack={handleBack} />
+                                </>
+                            ) : (
+                                <Redirect to="/login" />
+                            )}
                         </Col>
 
                     </Row>
