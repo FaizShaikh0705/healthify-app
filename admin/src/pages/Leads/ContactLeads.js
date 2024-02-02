@@ -4,6 +4,8 @@ import { storage } from "../../config/Fire";
 import Axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import { AuthContext } from '../../context/Auth';
+import { publicRequest } from '../../requestMethods'
 import Loader from "../../common/Loader/Loader";
 import $ from 'jquery';
 
@@ -11,7 +13,9 @@ function ContactLeads(props) {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [postData, setPostData] = useState("");
+  const { currentUser } = useContext(AuthContext);
+
+  const [contact, setContact] = useState([]);
   const [isPostDelete, setIsPostDelete] = useState(false);
 
   const [postId, setPostId] = useState("");
@@ -22,36 +26,16 @@ function ContactLeads(props) {
 
 
   useEffect(() => {
-    setIsPostDelete(false);
     getPostData();
-    // getRegisteredUserDetail();
-  }, [isPostDelete]);
+  }, []);
 
 
-  const getPostData = () => {
-    // Axios
-    // .get(`https://educaretech-dashboard-default-rtdb.firebaseio.com/contactLead.json`)
-    firebase.database().ref(`contactFormData`).get()
-      .then((response) => {
-        // setPostData(response.data)
-        setTimeout(setPostData(response.val()), 5000);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  // handles archive on card archive click
-  const handleDelete = (postId, e) => {
-    if (window.confirm("Are you sure you want to delete the Post?")) {
-      // Axios
-      // .delete(`https://educaretech-dashboard-default-rtdb.firebaseio.com/contactLead/${postId}.json`)
-      firebase.database().ref(`contactFormData/${postId}`).remove()
-        .then((response) => {
-          alert("contact lead deleted succesfully");
-          window.location.reload();
-          setIsPostDelete(true);
-        })
-        .catch((error) => console.log("Error" + error));
+  const getPostData = async () => {
+    try {
+      const res = await publicRequest.get("/contacts")
+      setContact(res.data);
+    } catch (error) {
+      console.error("Error fetching contacts:", error);
     }
   };
 
@@ -89,46 +73,36 @@ function ContactLeads(props) {
               <div className="view-post">
                 {/* <div className="post-datas">
                         <div class="card-deck"> */}
-                {loading ? (
+                {/* {loading ? (
                   <Loader></Loader>
-                ) : (
-                  <>
-                    <table className="table table-striped table-bordered">
-                      <thead className="thead-dark">
-                        <tr>
-                          <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Contact</th>
-                          <th scope="col">Location</th>
-                          <th scope="col">Action</th>
+                ) : ( */}
+                <>
+                  <table className="table table-striped table-bordered">
+                    <thead className="thead-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">message</th>
+                        {/* <th scope="col">position</th>
+                        <th scope="col">status</th> */}
+                      </tr>
+                    </thead>
+                    <tbody id="c">
+                      {contact.map((item) => (
+                        <tr key={item._id} className="job-open ">
+                          <td>{item.UserName}</td>
+                          <td>{item.email}</td>
+                          <td>{item.number}</td>
+                          <td>{item.message}</td>
+                          {/* <td>{item.position}</td>
+                          <td>{item.status}</td> */}
                         </tr>
-                      </thead>
-                      <tbody id="c">
-                        {postData ?
-                          Object.entries(postData).sort((a, b) => a[1].postTimestamp < b[1].postTimestamp ? 1 : -1).map((item) => (
-                            // var x = {item[1].status}
-                            <>
-                              <tr key={item[0]} className="job-open ">
-                                <td>{item[1].username}</td>
-                                <td>{item[1].email}</td>
-                                <td>{item[1].number}</td>
-                                <td>{item[1].location}</td>
-                                <td>
-                                  <a onClick={(e) => handleDelete(item[0], e)}><i className="fas fa-trash-alt text-danger pl-2"></i></a>
-                                </td>
-                              </tr>
-                            </>
-
-                          )) :
-                          <span>We'll notify you as soon as something becomes available.</span>
-                        }
-                      </tbody>
-                    </table>
-
-
-
-                  </>
-                )}
+                      ))}
+                    </tbody>
+                  </table>
+                </>
+                {/* )} */}
               </div>
 
             </div>
