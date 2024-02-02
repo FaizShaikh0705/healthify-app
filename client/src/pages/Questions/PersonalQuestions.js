@@ -55,7 +55,7 @@ const PersonalQuestions = ({ className, onNext }) => {
         <>
             <Container className={className}>
                 <Row className='justify-content-center mt-5'>
-                    <div className="col-md-6 col-lg-6">
+                    <div className="col-md-10 col-lg-01">
                         <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                             <h1 className='text-center'>Personal Details</h1>
                             <Formik
