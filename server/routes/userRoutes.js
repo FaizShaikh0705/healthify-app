@@ -94,7 +94,7 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
 
 // UPDATE user's address during checkout
 // router.put("/checkout/:id", verifyTokenAndAuthorization, async (req, res) => {
-router.put("/checkout/:id", async (req, res) => {
+router.put("/personalquestions/:id", async (req, res) => {
     try {
         const { address, contact } = req.body;
 
@@ -104,6 +104,46 @@ router.put("/checkout/:id", async (req, res) => {
             req.params.id,
             {
                 $set: { address, contact },
+            },
+            { new: true }
+        );
+
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.put("/bodymeasures/:id", async (req, res) => {
+    try {
+        const { weight, height, age } = req.body;
+
+        // Optionally, encrypt the address or perform any necessary validation
+
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: { weight, height, age },
+            },
+            { new: true }
+        );
+
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.put("/healthissues/:id", async (req, res) => {
+    try {
+        const { healthIssues } = req.body;
+
+        // Optionally, encrypt the address or perform any necessary validation
+
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: { healthIssues },
             },
             { new: true }
         );

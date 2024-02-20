@@ -25,6 +25,18 @@ const userSchema = new mongoose.Schema(
         contact: {
             contact: String,
         },
+        weight: {
+            contact: String,
+        },
+        height: {
+            contact: String,
+        },
+        age: {
+            contact: String,
+        },
+        healthIssues: {
+            contact: [String],
+        },
         isAdmin: {
             type: Boolean,
             default: false
