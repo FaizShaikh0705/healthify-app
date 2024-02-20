@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { userRequest } from '../../requestMethods'
+import { userRequest, isTokenSet } from '../../requestMethods'
 import { useSelector, useDispatch } from 'react-redux';
 import { setAddress, setContact } from '../../redux/userRedux';
 
@@ -10,10 +10,13 @@ const PersonalQuestions = ({ className, onNext }) => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    if (!isTokenSet) {
+        window.location.reload();
+    }
     const handleFormSubmit = async (values, actions) => {
         try {
             const userId = user.currentUser._id;
-            const response = await userRequest.put(`/users/checkout/${userId}`, { address: values.address, contact: values.contact });
+            const response = await userRequest.put(`/users/personalquestions/${userId}`, { address: values.address, contact: values.contact });
             dispatch(setAddress(response.data.address));
             dispatch(setContact(response.data.contact));
             console.log(response);
@@ -40,7 +43,7 @@ const PersonalQuestions = ({ className, onNext }) => {
                 state: document.getElementById("state").value,
             }
 
-            const response = await userRequest.put(`/users/checkout/${userId}`, { address: addr, contact: contNo });
+            const response = await userRequest.put(`/users/personalquestions/${userId}`, { address: addr, contact: contNo });
             dispatch(setAddress(response.data.address));
             dispatch(setContact(response.data.contact));
             onNext()

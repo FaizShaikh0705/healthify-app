@@ -48,6 +48,25 @@ const userSlice = createSlice({
         setContact: (state, action) => {
             state.currentUser.contact = action.payload;
         },
+
+        // New action to set the user's weight
+        setWeight: (state, action) => {
+            state.currentUser.weight = action.payload;
+        },
+
+        // New action to set the user's height
+        setHeight: (state, action) => {
+            state.currentUser.height = action.payload;
+        },
+
+        // New action to set the user's age
+        setAge: (state, action) => {
+            state.currentUser.age = action.payload;
+        },
+        setHealthIssues: (state, action) => {
+            state.currentUser.healthIssues = action.payload;
+        },
+
     },
 });
 
@@ -62,5 +81,9 @@ export const {
     resetRegistrationError,
     setAddress,
     setContact,
+    setWeight,
+    setHeight,
+    setAge,
+    setHealthIssues,
 } = userSlice.actions;
 export default userSlice.reducer;
