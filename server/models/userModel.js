@@ -37,6 +37,13 @@ const userSchema = new mongoose.Schema(
         healthIssues: {
             contact: [String],
         },
+        weightGoal: {
+            type: String,
+            enum: ['loss', 'gain'],
+        },
+        targetWeight: {
+            contact: String,
+        },
         isAdmin: {
             type: Boolean,
             default: false

@@ -154,4 +154,24 @@ router.put("/healthissues/:id", async (req, res) => {
     }
 });
 
+router.put("/weightgoal/:id", async (req, res) => {
+    try {
+        const { weightGoal, targetWeight } = req.body;
+
+        // Optionally, encrypt the address or perform any necessary validation
+
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: { weightGoal, targetWeight },
+            },
+            { new: true }
+        );
+
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 export default router
