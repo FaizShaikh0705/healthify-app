@@ -4,6 +4,7 @@ import { withRouter, Redirect, Link } from 'react-router-dom';
 import PersonalQuestions from './PersonalQuestions';
 import BodyMeasures from './BodyMeasures';
 import HealthIssues from './HealthIssues';
+import GoalQuestions from './GoalQuestions';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import { useSelector } from "react-redux";
@@ -19,7 +20,9 @@ const Questions = () => {
         } else if (currentStep === "body") {
             setCurrentStep("health");
         } else if (currentStep === "health") {
-            setCurrentStep("success");
+            setCurrentStep("goal");
+        } else if (currentStep === "goal") {
+            setCurrentStep("sucess")
         }
     };
 
@@ -28,9 +31,10 @@ const Questions = () => {
             setCurrentStep("personal");
         } else if (currentStep === "health") {
             setCurrentStep("body");
-        }
-    };
-
+        } else if (currentStep === "goal") {
+            setCurrentStep("health");
+        };
+    }
 
     const currentUser = useSelector((state) => state.user);
 
@@ -45,7 +49,8 @@ const Questions = () => {
                                 <>
                                     <PersonalQuestions className={currentStep === 'personal' ? 'visible' : 'hidden'} onNext={handleNext} />
                                     <BodyMeasures className={currentStep === 'body' ? 'visible' : 'hidden'} onNext={handleNext} onBack={handleBack} />
-                                    <HealthIssues className={currentStep === 'health' ? 'visible' : 'hidden'} onBack={handleBack} />
+                                    <HealthIssues className={currentStep === 'health' ? 'visible' : 'hidden'} onBack={handleBack} onNext={handleNext} />
+                                    <GoalQuestions className={currentStep === 'goal' ? 'visible' : 'hidden'} onBack={handleBack} />
                                 </>
                             ) : (
                                 <Redirect to="/login" />
