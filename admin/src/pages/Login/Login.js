@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import fire from '../../config/Fire';
 import { AuthContext } from '../../context/Auth';
 import { withRouter, Redirect, Link } from 'react-router-dom';
-import KidoLogo from '../../assets/kido-logo.jpg';
+import KidoLogo from '../../assets/hlogo.jpeg';
 import './Login.css';
 
 
@@ -59,7 +59,7 @@ function Login(props) {
                 </div>
                 <div className="row pt-3">
                   <div className="col-lg-12 text-center">
-                    <p class="text-center"> Don't have an account?  <Link to="/qirah-dashboard-SignUp">Sign up</Link></p>
+                    <p class="text-center"> Don't have an account?  <Link to="/SignUp">Sign up</Link></p>
                   </div>
                 </div>
               </div>

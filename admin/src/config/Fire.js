@@ -4,14 +4,14 @@ require("firebase/auth");
 
 const config = {
 
-  apiKey: "AIzaSyAFNx60JgSx_4ZW2IeIZ5WnMXcMc-SsIUY",
-  authDomain: "qirah-dashboard.firebaseapp.com",
-  databaseURL: "https://qirah-dashboard-default-rtdb.firebaseio.com",
-  projectId: "qirah-dashboard",
-  storageBucket: "qirah-dashboard.appspot.com",
-  messagingSenderId: "769306784594",
-  appId: "1:769306784594:web:758647bca6d46db1ca808b",
-  measurementId: "G-LFXRG8NZDD"
+  apiKey: "AIzaSyBTDbIcUK25PT0CJZg-xRCBWEFl643TRvM",
+  authDomain: "healthify-app-b0a2e.firebaseapp.com",
+  databaseURL: "https://healthify-app-b0a2e-default-rtdb.firebaseio.com",
+  projectId: "healthify-app-b0a2e",
+  storageBucket: "healthify-app-b0a2e.appspot.com",
+  messagingSenderId: "690902591225",
+  appId: "1:690902591225:web:d4b665d57654fe4ae42428",
+  measurementId: "G-5NW7N8M1D0"
 
 };
 

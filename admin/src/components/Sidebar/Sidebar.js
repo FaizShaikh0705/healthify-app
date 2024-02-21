@@ -38,25 +38,10 @@ const Sidebar = () => {
               <NavLink exact to="/home" >Home</NavLink>
             </li>
             <li>
-              <NavLink exact to="/blogs" >Blogs</NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/products" >Products</NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/coupons" >Coupons</NavLink>
-            </li>
-            <li>
               <NavLink exact to="/order" >Orders</NavLink>
             </li>
             <li>
               <NavLink exact to="/customer" >Customers</NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/testimonails">Testimonails</NavLink>
-            </li>
-            <li>
-              <NavLink exact to="/reviews">Reviews</NavLink>
             </li>
             <div class="accordion" id="accordionExample">
               <div id="drop-nav-1">
@@ -83,9 +68,6 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <li>
-              <a href="https://qirah.netlify.app/" target="_blank" rel="noopener noreferrer">Qirah Website</a>
-            </li>
             <li>
               <a onClick={() => fire.auth().signOut()}>Sign Out</a>
             </li>
