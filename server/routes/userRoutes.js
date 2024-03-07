@@ -41,7 +41,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //GET USER
-router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+router.get("/find/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         const { password, ...others } = user._doc;
@@ -164,6 +164,26 @@ router.put("/weightgoal/:id", async (req, res) => {
             req.params.id,
             {
                 $set: { weightGoal, targetWeight },
+            },
+            { new: true }
+        );
+
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.put("/bmi/:id", async (req, res) => {
+    try {
+        const { bmi } = req.body;
+
+        // Optionally, encrypt the address or perform any necessary validation
+
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: { bmi },
             },
             { new: true }
         );

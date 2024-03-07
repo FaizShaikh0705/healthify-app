@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import userRoutes from './routes/userRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import dietRoutes from './routes/dietRoutes.js'
 
 dotenv.config();
 const app = express()
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/diet', dietRoutes)
 
 const PORT = process.env.PORT || 5001
 

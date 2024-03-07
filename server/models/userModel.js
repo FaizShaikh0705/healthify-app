@@ -23,19 +23,19 @@ const userSchema = new mongoose.Schema(
             state: String,
         },
         contact: {
-            contact: String,
+            type: String,
         },
         weight: {
-            contact: String,
+            type: String,
         },
         height: {
-            contact: String,
+            type: String,
         },
         age: {
-            contact: String,
+            type: String,
         },
         healthIssues: {
-            contact: [String],
+            type: String,
         },
         weightGoal: {
             type: String,
@@ -43,6 +43,21 @@ const userSchema = new mongoose.Schema(
         },
         targetWeight: {
             contact: String,
+        },
+        bmi: {
+            weight: {
+                type: Number,
+            },
+            height: {
+                type: Number,
+            },
+            bmi: {
+                type: Number,
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now
+            }
         },
         isAdmin: {
             type: Boolean,
