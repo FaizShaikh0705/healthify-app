@@ -8,7 +8,7 @@ body {
   overflow-x: hidden;
   /* padding-top: 50px; */
   line-height: 1.5;
-  background-color: #3B4131 !important;
+  background-color: #F8F7FF !important;
 }
 
 .wrapper {
@@ -81,8 +81,8 @@ a {
 }
 
 .btn-primary {
-  background-color: #FFF6DB;
-  border: 1px solid #FFF6DB;
+  background-color: #B8B8FF;
+  border: 1px solid #B8B8FF;
 }
 
 .text-primary {
@@ -105,12 +105,12 @@ a {
 
 .bg-border-btm {
   /* background: #111213; */
-  border-bottom: 3px solid #FFF6DB;
+  border-bottom: 3px solid #9381FF;
 }
 
 .bg-border-top {
   /* background: #111213; */
-  border-top: 3px solid #FFF6DB;
+  border-top: 3px solid #9381FF;
 }
 
 a.nav-drop-ref {

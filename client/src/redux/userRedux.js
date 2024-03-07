@@ -71,6 +71,9 @@ const userSlice = createSlice({
         },
         setTargetWeight: (state, action) => {
             state.currentUser.targetWeight = action.payload;
+        },
+        setBMI: (state, action) => {
+            state.currentUser.bmi = action.payload;
         }
 
     },
@@ -93,5 +96,6 @@ export const {
     setHealthIssues,
     setWeightGoal,
     setTargetWeight,
+    setBMI,
 } = userSlice.actions;
 export default userSlice.reducer;

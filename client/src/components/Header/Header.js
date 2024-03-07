@@ -19,8 +19,9 @@ const Header = () => {
             <nav className="navbar navbar-light fixed-top bg-border-btm bg-blue">
                 <div className="container-fluid">
                     <div className="text-center Usericon">
-                        <img src={logo} width="260" alt="icon" />
+                        <a href='/'> <img src={logo} width="260" alt="icon" /></a>
                     </div>
+                    <a href='/exercise'><h3>Excercises</h3></a>
                     {currentUser && currentUser.currentUser ? (
                         <NavDropdown title={currentUser.currentUser.userName} id="username" >
                             <NavDropdown.Item onClick={logoutHandler} className="pe-5">
@@ -32,7 +33,7 @@ const Header = () => {
                             <a href="/login" className="nav-signin text-primary"><h4>Sign-In</h4></a>
                         </div >
                     )}
-                </div >
+                </div>
             </nav >
 
         </>

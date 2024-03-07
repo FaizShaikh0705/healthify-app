@@ -1,0 +1,30 @@
+.question-section {
+    margin: 120px 0px;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-google {
+    margin-left: 5px;
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 10px 19px;
+    cursor: pointer;
+    background-color: #BBAEFE;
+}
+
+.search-bar {
+    margin: 20px 0px;
+    width: 80%;
+}
+
+.exercise-list {
+    margin: 10px 0px;
+}

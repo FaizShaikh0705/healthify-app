@@ -1,21 +1,21 @@
 .bg-blue {
-    background-color: #3B4131;
+    background-color: #F8F7FF;
 }
 
 .navbar h1 {
     font-weight: 400;
     font-size: 20px;
-    color: #FFF6DB;
+    color: #B8B8FF;
 }
 
 .login-logo {
-    background-color: #f35124;
+    background-color: #9381FF;
     width: 40px;
     height: 40px;
     text-transform: capitalize;
     border-radius: 50% !important;
     border: none;
-    color: #FFF6DB;
+    color: #B8B8FF;
     font-size: 16px;
     text-align: center;
 }
@@ -23,7 +23,7 @@
 a {
     text-decoration: none;
     cursor: pointer;
-    color: #FFF6DB !important;
+    color: #9381FF !important;
 }
 
 .dropdown-menu {
@@ -31,7 +31,7 @@ a {
 }
 
 h4 {
-    color: #FFF6DB !important;
+    color: #9381FF !important;
 }
 
 

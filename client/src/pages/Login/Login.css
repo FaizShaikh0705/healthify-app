@@ -1,6 +1,6 @@
 .auth {
     margin: 80px 0px;
-    background-color: #3B4131;
+    background-color: #F8F7FF;
     height: 100vh;
 }
 
@@ -14,7 +14,7 @@ h3 {
 }
 
 h3 span {
-    background: #fff;
+    background: #B8B8FF;
     padding: 0 10px;
 }
 

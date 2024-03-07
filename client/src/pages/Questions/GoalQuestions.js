@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Formik, Field, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { userRequest, isTokenSet } from '../../requestMethods';
 import { useSelector, useDispatch } from 'react-redux';
 import { setWeightGoal, setTargetWeight } from '../../redux/userRedux';
 
 const GoalQuestions = ({ className, onNext, onBack }) => {
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
@@ -20,7 +22,10 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
             });
             dispatch(setWeightGoal(response.data.weightGoal));
             dispatch(setTargetWeight(response.data.targetWeight));
-            onNext();
+            // onNext();
+            alert("Details successfully added");
+            window.location.reload();
+            history.push('/plans');
         } catch (error) {
             console.error('Error submitting form:', error);
             actions.setSubmitting(false);
@@ -37,7 +42,9 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
 
             dispatch(setWeightGoal(values.weightGoal));
             dispatch(setTargetWeight(values.targetWeight));
-            onNext();
+            // onNext();
+            alert("Details successfully added");
+            history.push('/plans');
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -52,7 +59,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                         <h1 className="text-center">Weight Goal</h1>
                         <Formik
                             initialValues={{
-                                weightGoal: user.currentUser?.weightGoal || 'loss',
+                                weightGoal: user.currentUser?.weightGoal || 'Weight Loss',
                                 targetWeight: user.currentUser?.targetWeight || '',
                             }}
                             validationSchema={Yup.object().shape({
@@ -71,7 +78,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                                     className="form-check-input"
                                                     type="radio"
                                                     name="weightGoal"
-                                                    value="loss"
+                                                    value="Weight Loss"
                                                     id="radioLoss"
                                                 />
                                                 <label className="form-check-label" htmlFor="radioLoss">Weight Loss</label>
@@ -81,10 +88,20 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                                     className="form-check-input"
                                                     type="radio"
                                                     name="weightGoal"
-                                                    value="gain"
+                                                    value="Weight Gain"
                                                     id="radioGain"
                                                 />
                                                 <label className="form-check-label" htmlFor="radioGain">Weight Gain</label>
+                                            </div>
+                                            <div className="form-check form-check-inline">
+                                                <Field
+                                                    className="form-check-input"
+                                                    type="radio"
+                                                    name="weightGoal"
+                                                    value="Maintenance"
+                                                    id="radioGain"
+                                                />
+                                                <label className="form-check-label" htmlFor="radioMaintain">Weight Maintain</label>
                                             </div>
                                         </div>
                                     </Form.Group>
@@ -103,6 +120,9 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                             className="valid-clr invalid-feedback"
                                         />
                                     </Form.Group>
+                                    <Button className="btn-google" variant="outline-dark" onClick={onBack}>
+                                        Back
+                                    </Button>
                                     <Button className="btn-google" variant="outline-dark" onClick={() => payTypSte(formik.values)}>
                                         Continue
                                     </Button>

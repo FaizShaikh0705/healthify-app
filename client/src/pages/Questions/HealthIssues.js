@@ -51,7 +51,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                         <h1 className="text-center">Health Issues</h1>
                         <Formik
                             initialValues={{
-                                healthIssues: user.currentUser?.healthIssues || [],
+                                healthIssues: user.currentUser?.healthIssues || '',
                             }}
                             validationSchema={Yup.object().shape({
                                 healthIssues: Yup.array().min(1, 'Select at least one health issue.'),
@@ -69,7 +69,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                                type="checkbox"
+                                                type="radio"
                                                 name="healthIssues"
                                                 value="Diabetes"
                                                 id="checkboxDiabetes"
@@ -85,7 +85,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                                type="checkbox"
+                                               type="radio"
                                                 name="healthIssues"
                                                 value="Cholesterol"
                                                 id="checkboxCholesterol"
@@ -101,7 +101,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                                type="checkbox"
+                                               type="radio"
                                                 name="healthIssues"
                                                 value="Thyroid"
                                                 id="checkboxThyroid"
@@ -117,7 +117,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                                type="checkbox"
+                                               type="radio"
                                                 name="healthIssues"
                                                 value="Blood Pressure"
                                                 id="checkboxBloodPressure"
@@ -133,7 +133,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                                type="checkbox"
+                                               type="radio"
                                                 name="healthIssues"
                                                 value="Heart Patient"
                                                 id="checkboxHeartPatient"
@@ -142,12 +142,31 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                 Heart Patient
                                             </label>
                                         </div>
+                                        <div className="form-check">
+                                            <Field
+                                                className={`form-check-input ${formik.touched.none &&
+                                                    formik.errors.none
+                                                    ? 'is-invalid'
+                                                    : ''
+                                                    }`}
+                                               type="radio"
+                                                name="none"
+                                                value="None"
+                                                id="checkboxNone"
+                                            />
+                                            <label className="form-check-label" htmlFor="checkboxNone">
+                                                None
+                                            </label>
+                                        </div>
                                         <ErrorMessage
                                             name="healthIssues"
                                             component="div"
                                             className="valid-clr invalid-feedback"
                                         />
                                     </Form.Group>
+                                    <Button className="btn-google" variant="outline-dark" onClick={onBack}>
+                                        Back
+                                    </Button>
                                     <Button
                                         className="btn-google"
                                         variant="outline-dark"

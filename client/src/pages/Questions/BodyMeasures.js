@@ -130,6 +130,9 @@ const BodyMeasures = ({ className, onNext, onBack }) => {
                                                 className="valid-clr invalid-feedback"
                                             />
                                         </Form.Group>
+                                        <Button className="btn-google" variant="outline-dark" onClick={onBack}>
+                                            Back
+                                        </Button>
                                         <Button className="btn-google" variant="outline-dark" onClick={() => payTypSte()}>
                                             Continue
                                         </Button>

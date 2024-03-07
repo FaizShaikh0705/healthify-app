@@ -7,6 +7,9 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from './pages/SignUp/SignUp';
 import Questions from './pages/Questions/Questions';
+import Exercise from './pages/Exercise/Exercise';
+import Plans from './pages/Plans/Plans';
+import BMI from './pages/BMI/BMI'
 import './App.css';
 
 function App() {
@@ -15,7 +18,10 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <Switch>
-          <Route path="/questions" component={Questions} />
+            <Route path="/bmi" component={BMI} />
+            <Route path="/plans" component={Plans} />
+            <Route path="/exercise" component={Exercise} />
+            <Route path="/questions" component={Questions} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/" component={Home} />

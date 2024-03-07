@@ -36,7 +36,7 @@ function SignUp(props) {
         <div className="authentication">
           <div className="container">
             <div className="text-center">
-              <img src={logo} width="300" alt="icon" />
+              {/* <img src={logo} width="300" alt="icon" /> */}
             </div>
             <div className="row justify-content-center">
 
