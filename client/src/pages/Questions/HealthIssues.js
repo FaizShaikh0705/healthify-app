@@ -71,7 +71,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     }`}
                                                 type="radio"
                                                 name="healthIssues"
-                                                value="Diabetes"
+                                                value="Diabetes Patient"
                                                 id="checkboxDiabetes"
                                             />
                                             <label className="form-check-label" htmlFor="checkboxDiabetes">
@@ -87,7 +87,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     }`}
                                                type="radio"
                                                 name="healthIssues"
-                                                value="Cholesterol"
+                                                value="Cholesterol Patient"
                                                 id="checkboxCholesterol"
                                             />
                                             <label className="form-check-label" htmlFor="checkboxCholesterol">
@@ -103,7 +103,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     }`}
                                                type="radio"
                                                 name="healthIssues"
-                                                value="Thyroid"
+                                                value="Thyroid Patient"
                                                 id="checkboxThyroid"
                                             />
                                             <label className="form-check-label" htmlFor="checkboxThyroid">

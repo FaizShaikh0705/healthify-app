@@ -4,9 +4,11 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import IMG1 from '../../assets/Ria-G-p-800.png'
 import IMG2 from '../../assets/CGM-Banner-p-800.png'
+import { useSelector, useDispatch } from 'react-redux';
 import './Home.css'
 
 const Home = () => {
+
   return (
     <>
       <Header />

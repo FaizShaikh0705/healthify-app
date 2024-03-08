@@ -20,9 +20,11 @@ const BMI = () => {
 
     const calculateBMI = () => {
         const weightInKg = parseFloat(weight);
-        const heightInM = parseFloat(height);
+        const heightInCm = parseFloat(height);
 
-        if (weightInKg > 0 && heightInM > 0) {
+        if (weightInKg > 0 && heightInCm > 0) {
+            // Convert height from cm to meters
+            const heightInM = heightInCm / 100;
             const bmiValue = weightInKg / (heightInM * heightInM);
             setBMI(bmiValue.toFixed(2));
             saveBMI(weightInKg, heightInM, bmiValue.toFixed(2));
@@ -83,7 +85,7 @@ const BMI = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label>Height (m): </label>
+                                    <label>Height (cm): </label>
                                     <input
                                         type="number"
                                         value={height}
