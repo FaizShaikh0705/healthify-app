@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
             type: String,
         },
         healthIssues: {
-            type: String,
+            type: [String],
         },
         weightGoal: {
             type: String,
