@@ -35,21 +35,22 @@ const Plans = () => {
             fetchAllDietPlans();
         }
     }, [currentUser]);
-    console.log("diet Data", dietPlans)
+    console.log("diet Data", currentUser.healthIssues[0])
 
-    const FdietData = dietPlans.filter(obj => obj.type === currentUser.weightGoal && obj.for === currentUser.healthIssues[0])
-    console.log(" Filtered diet Data", FdietData)
+    // const FdietData = dietPlans.filter(obj => obj.type === currentUser.weightGoal && obj.for === currentUser.healthIssues[0])
+    // console.log(" Filtered diet Data", FdietData)
 
 
-    const data = [
-        { name: "Public", email: "asjdaj@hhjas.com" },
-        { name: "Private", email: "asjdaj@hhjas.com" },
-        { name: "Restricted", email: "asjdaj@hhjas.com" },
-    ];
+    // const data = [
+    //     { name: "Public", email: "asjdaj@hhjas.com" },
+    //     { name: "Private", email: "asjdaj@hhjas.com" },
+    //     { name: "Restricted", email: "asjdaj@hhjas.com" },
+    // ];
 
-    const filteredData = data.filter(obj => obj.name === "Public");
+    // const filteredData = data.filter(obj => obj.name === "Public");
 
-    console.log("public", filteredData);
+    // console.log("public", filteredData);
+    // console.log("Hissue", currentUser.weightGoal);
 
 
 
@@ -65,19 +66,22 @@ const Plans = () => {
                                 {dietPlans.length === 0 ? (
                                     <p>No diet plans found for your profile</p>
                                 ) : (
-                                    dietPlans.map((dietPlan, index) => (
-                                        <div key={index}>
-                                            <h3>Type: {dietPlan.type}</h3>
-                                            <h3>For: {dietPlan.for}</h3>
-                                            <h3>Meals:</h3>
-                                            <ul>
-                                                {Object.entries(dietPlan.meals).map(([mealType, foods], index) => (
-                                                    <li key={index}>
-                                                        <strong>{mealType.replace('_', ' ').toUpperCase()}</strong>: {foods.join(', ')}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                    Object.entries(dietPlans).map((dietPlan, index) => (
+                                        <>
+                                            {console.log(dietPlan[1].for)}
+                                            {/* <div key={index}>
+                                                <h3>Type: {dietPlan.type}</h3>
+                                                <h3>For: {dietPlan.for}</h3>
+                                                <h3>Meals:</h3>
+                                                <ul>
+                                                    {Object.entries(dietPlan.meals).map(([mealType, foods], index) => (
+                                                        <li key={index}>
+                                                            <strong>{mealType.replace('_', ' ').toUpperCase()}</strong>: {foods.join(', ')}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div> */}
+                                        </>
                                     ))
                                 )}
                             </div>

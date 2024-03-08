@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import IMG1 from '../../assets/Ria-G-p-800.png'
+import IMG2 from '../../assets/CGM-Banner-p-800.png'
 import './Home.css'
 
 const Home = () => {
@@ -22,17 +23,79 @@ const Home = () => {
             </div>
             <div className="text-wrapper">
               <div className="text-wrapper">
-                <div className="text">Is it even possible to eat healthy while travelling?</div>
+                <div className="text">Tailors meal plans based on individual profiles, considering factors like health conditions, dietary restrictions, and fitness goals.</div>
                 <div className="just-healthify">
                   <div className="hashtag">
                     <div className="text grey _24-px">#JustHealthify</div>
                     <div className="text grey medium-text _24-px"> with</div>
                   </div>
-                  <div className="text green">AI Coach Ria</div>
+                  <div className="text green">AI Fit Food</div>
                 </div>
               </div>
               <div className="action">
                 <a href="/questions" className="button-prime btn btn-primary">
+                  <div className="text-4 text-white">Get Started</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div id="Ria-section" className="snap">
+          <div className="content-wrapper">
+            <div className="text-wrapper">
+              <div className="text-wrapper">
+                <div className="text">Utilizes artificial intelligence to provide accurate and science-backed nutritional recommendations, surpassing generic meal plans.</div>
+                <div className="just-healthify">
+                  <div className="hashtag">
+                    <div className="text grey _24-px">#JustHealthify</div>
+                    <div className="text grey medium-text _24-px"> with</div>
+                  </div>
+                  <div className="text green">AI Fit Food</div>
+                </div>
+              </div>
+              <div className="action">
+                <a href="/plans" className="button-prime btn btn-primary">
+                  <div className="text-4 text-white">Get Started</div>
+                </a>
+              </div>
+            </div>
+            <div className="image-container">
+              <img src={IMG1}
+                loading="lazy"
+                width="524"
+                sizes="(max-width: 479px) 90vw, (max-width: 767px) 76vw, (max-width: 991px) 524px, (max-width: 1439px) 38vw, 524px"
+                alt=""
+                className="banner-1-2" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div id="Ria-section" className="snap">
+          <div className="content-wrapper">
+            <div className="image-container">
+              <img src={IMG2}
+                loading="lazy"
+                width="524"
+                sizes="(max-width: 479px) 90vw, (max-width: 767px) 76vw, (max-width: 991px) 524px, (max-width: 1439px) 38vw, 524px"
+                alt=""
+                className="banner-1-2" />
+            </div>
+            <div className="text-wrapper">
+              <div className="text-wrapper">
+                <div className="text"> Gathers and analyzes user data to offer continuous improvements and a deeper understanding of nutritional needs, contributing to an evolving database of insights.</div>
+                <div className="just-healthify">
+                  <div className="hashtag">
+                    <div className="text grey _24-px">#JustHealthify</div>
+                    <div className="text grey medium-text _24-px"> with</div>
+                  </div>
+                  <div className="text green">AI Fit Food</div>
+                </div>
+              </div>
+              <div className="action">
+                <a href="/exercise" className="button-prime btn btn-primary">
                   <div className="text-4 text-white">Get Started</div>
                 </a>
               </div>

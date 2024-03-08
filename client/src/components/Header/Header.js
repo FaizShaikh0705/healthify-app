@@ -21,7 +21,7 @@ const Header = () => {
                     <div className="text-center Usericon">
                         <a href='/'> <img src={logo} width="150" alt="icon" /></a>
                     </div>
-                    <a href='/exercise'><h3>Excercises</h3></a>
+                    {/* <a href='/exercise'><h3>Excercises</h3></a> */}
                     {currentUser && currentUser.currentUser ? (
                         <NavDropdown title={currentUser.currentUser.userName} id="username" >
                             <NavDropdown.Item onClick={logoutHandler} className="pe-5">
