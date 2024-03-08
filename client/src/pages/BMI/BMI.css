@@ -1,0 +1,13 @@
+.btn-google {
+    margin-left: 5px;
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 10px 19px;
+    cursor: pointer;
+    background-color: #BBAEFE;
+}
+
+.question-section {
+    margin: 120px 0px;
+}

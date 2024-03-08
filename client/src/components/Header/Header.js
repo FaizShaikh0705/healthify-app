@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import './Header.css';
-import logo from './hlogo.jpeg';
+import logo from '../../assets/fit-food.png';
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/apiCalls";
 
@@ -19,7 +19,7 @@ const Header = () => {
             <nav className="navbar navbar-light fixed-top bg-border-btm bg-blue">
                 <div className="container-fluid">
                     <div className="text-center Usericon">
-                        <a href='/'> <img src={logo} width="260" alt="icon" /></a>
+                        <a href='/'> <img src={logo} width="150" alt="icon" /></a>
                     </div>
                     <a href='/exercise'><h3>Excercises</h3></a>
                     {currentUser && currentUser.currentUser ? (

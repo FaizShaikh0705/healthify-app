@@ -1,0 +1,38 @@
+.snap {
+    width: 100%;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    background-color: rgba(255, 255, 255, 0);
+    justify-content: center;
+    align-items: center;
+    padding: 160px 24px 100px 48px;
+    display: flex;
+    position: relative;
+}
+
+.image-container {
+    width: 100%;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.content-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    grid-column-gap: 152px;
+    grid-row-gap: 152px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.text-wrapper {
+    width: 90%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}

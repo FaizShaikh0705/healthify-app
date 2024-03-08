@@ -20,20 +20,37 @@ const Plans = () => {
     const currentUser = useSelector((state) => state.user.currentUser);
 
     useEffect(() => {
-        const fetchDietPlans = async () => {
+        const fetchAllDietPlans = async () => {
             try {
-                const response = await publicRequest.get(`/diet/${currentUser.healthIssues[0]}/${currentUser.weightGoal}`);
+                const response = await publicRequest.get(`/diet`);
                 setDietPlans(response.data);
-                console.log("filtered Data", response.data)
+                setLoading(false);
             } catch (error) {
-                console.error("Error fetching diet plans:", error);
+                console.error("Error fetching all diet plans:", error);
+                setError(error.message);
             }
         };
 
         if (currentUser.healthIssues.length > 0 && currentUser.weightGoal) {
-            fetchDietPlans();
+            fetchAllDietPlans();
         }
     }, [currentUser]);
+    console.log("diet Data", dietPlans)
+
+    const FdietData = dietPlans.filter(obj => obj.type === currentUser.weightGoal && obj.for === currentUser.healthIssues[0])
+    console.log(" Filtered diet Data", FdietData)
+
+
+    const data = [
+        { name: "Public", email: "asjdaj@hhjas.com" },
+        { name: "Private", email: "asjdaj@hhjas.com" },
+        { name: "Restricted", email: "asjdaj@hhjas.com" },
+    ];
+
+    const filteredData = data.filter(obj => obj.name === "Public");
+
+    console.log("public", filteredData);
+
 
 
     return (

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setBMI } from '../../redux/userRedux';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
+import './BMI.css'
 
 const BMI = () => {
 
@@ -68,8 +69,8 @@ const BMI = () => {
                                 <div>
                                     {bmi !== null && (
                                         <div>
-                                            <p>Your BMI is: {bmi.toFixed(2)}</p>
-                                            <p>Interpretation: {interpretBMI()}</p>
+                                            <p className="text grey _24-px">Your BMI is: {bmi.toFixed(2)}</p>
+                                            <p className="text grey _24-px">Interpretation: {interpretBMI()}</p>
                                         </div>
                                     )}
                                 </div>
@@ -89,7 +90,7 @@ const BMI = () => {
                                         onChange={(e) => setHeight(e.target.value)}
                                     />
                                 </div>
-                                <button onClick={calculateBMI}>Calculate BMI</button>
+                                <button className="btn btn-google" onClick={calculateBMI}>Calculate BMI</button>
                             </div>
                         </div>
                     </Row>
