@@ -48,9 +48,6 @@ const userSchema = new mongoose.Schema(
             weight: {
                 type: Number,
             },
-            height: {
-                type: Number,
-            },
             bmi: {
                 type: Number,
             },
@@ -58,6 +55,21 @@ const userSchema = new mongoose.Schema(
                 type: Date,
                 default: Date.now
             }
+        },
+        exerciseFrequency: {
+            type: String,
+        },
+        mealsPerDay: {
+            type: Number,
+        },
+        dietRating: {
+            type: String,
+        },
+        restaurantFrequency: {
+            type: String,
+        },
+        vegetarian: {
+            type: String,
         },
         isAdmin: {
             type: Boolean,

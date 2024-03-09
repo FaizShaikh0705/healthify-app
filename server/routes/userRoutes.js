@@ -156,14 +156,14 @@ router.put("/healthissues/:id", async (req, res) => {
 
 router.put("/weightgoal/:id", async (req, res) => {
     try {
-        const { weightGoal, targetWeight } = req.body;
+        const { weightGoal, targetWeight, exerciseFrequency, mealsPerDay, dietRating, restaurantFrequency, vegetarian } = req.body;
 
         // Optionally, encrypt the address or perform any necessary validation
 
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
             {
-                $set: { weightGoal, targetWeight },
+                $set: { weightGoal, targetWeight, exerciseFrequency, mealsPerDay, dietRating, restaurantFrequency, vegetarian },
             },
             { new: true }
         );
@@ -173,6 +173,26 @@ router.put("/weightgoal/:id", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// router.put("/weightgoal/:id", async (req, res) => {
+//     try {
+//         const { exerciseFrequency, mealsPerDay, dietRating, restaurantFrequency, vegetarian } = req.body;
+
+//         // Optionally, encrypt the address or perform any necessary validation
+
+//         const updatedUser = await User.findByIdAndUpdate(
+//             req.params.id,
+//             {
+//                 $set: { exerciseFrequency, mealsPerDay, dietRating, restaurantFrequency, vegetarian },
+//             },
+//             { new: true }
+//         );
+
+//         res.status(200).json(updatedUser);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.put("/bmi/:id", async (req, res) => {
     try {
