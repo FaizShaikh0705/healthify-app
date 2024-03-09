@@ -74,7 +74,22 @@ const userSlice = createSlice({
         },
         setBMI: (state, action) => {
             state.currentUser.bmi = action.payload;
-        }
+        },
+        setExerciseFrequency: (state, action) => {
+            state.currentUser.exerciseFrequency = action.payload;
+        },
+        setMealsPerDay: (state, action) => {
+            state.currentUser.mealsPerDay = action.payload;
+        },
+        setDietRating: (state, action) => {
+            state.currentUser.dietRating = action.payload;
+        },
+        setRestaurantFrequency: (state, action) => {
+            state.currentUser.restaurantFrequency = action.payload;
+        },
+        setVegetarian: (state, action) => {
+            state.currentUser.vegetarian = action.payload;
+        },
 
     },
 });
@@ -97,5 +112,10 @@ export const {
     setWeightGoal,
     setTargetWeight,
     setBMI,
+    setExerciseFrequency,
+    setMealsPerDay,
+    setDietRating,
+    setRestaurantFrequency,
+    setVegetarian,
 } = userSlice.actions;
 export default userSlice.reducer;

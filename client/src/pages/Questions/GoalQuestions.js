@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { userRequest, isTokenSet } from '../../requestMethods';
 import { useSelector, useDispatch } from 'react-redux';
-import { setWeightGoal, setTargetWeight } from '../../redux/userRedux';
+import { setWeightGoal, setTargetWeight, setExerciseFrequency, setMealsPerDay, setDietRating, setRestaurantFrequency, setVegetarian } from '../../redux/userRedux';
 
 const GoalQuestions = ({ className, onNext, onBack }) => {
     const history = useHistory();
@@ -19,9 +19,19 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
             const response = await userRequest.put(`/users/weightgoal/${userId}`, {
                 weightGoal: values.weightGoal,
                 targetWeight: values.targetWeight,
+                exerciseFrequency: values.exerciseFrequency,
+                mealsPerDay: values.mealsPerDay,
+                dietRating: values.dietRating,
+                restaurantFrequency: values.restaurantFrequency,
+                vegetarian: values.vegetarian,
             });
             dispatch(setWeightGoal(response.data.weightGoal));
             dispatch(setTargetWeight(response.data.targetWeight));
+            dispatch(setExerciseFrequency(response.data.weightGoal));
+            dispatch(setMealsPerDay(response.data.mealsPerDay));
+            dispatch(setDietRating(response.data.dietRating));
+            dispatch(setRestaurantFrequency(response.data.restaurantFrequency));
+            dispatch(setVegetarian(response.data.vegetarian));
             // onNext();
             alert("Details successfully added");
             window.location.reload();
@@ -38,6 +48,11 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
             const response = await userRequest.put(`/users/weightgoal/${userId}`, {
                 weightGoal: values.weightGoal,
                 targetWeight: values.targetWeight,
+                exerciseFrequency: values.exerciseFrequency,
+                mealsPerDay: values.mealsPerDay,
+                dietRating: values.dietRating,
+                restaurantFrequency: values.restaurantFrequency,
+                vegetarian: values.vegetarian,
             });
 
             dispatch(setWeightGoal(values.weightGoal));
@@ -61,10 +76,20 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                             initialValues={{
                                 weightGoal: user.currentUser?.weightGoal || 'Weight Loss',
                                 targetWeight: user.currentUser?.targetWeight || '',
+                                exerciseFrequency: '',
+                                mealsPerDay: '',
+                                dietRating: '',
+                                restaurantFrequency: '',
+                                vegetarian: '',
                             }}
                             validationSchema={Yup.object().shape({
                                 weightGoal: Yup.string().required('Weight goal is required'),
                                 targetWeight: Yup.number().positive('Target weight must be positive').required('Target weight is required'),
+                                exerciseFrequency: Yup.string().required('Exercise frequency is required'),
+                                mealsPerDay: Yup.number().required('Number of meals per day is required'),
+                                dietRating: Yup.number().required('Diet rating is required'),
+                                restaurantFrequency: Yup.string().required('Restaurant frequency is required'),
+                                vegetarian: Yup.string().required('Vegetarian preference is required'),
                             })}
                             onSubmit={handleFormSubmit}
                         >
@@ -119,6 +144,71 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                             component="div"
                                             className="valid-clr invalid-feedback"
                                         />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="txt-lbl">How often do you do exercise?</Form.Label>
+                                        <Field
+                                            className="form-control"
+                                            as="select"
+                                            name="exerciseFrequency"
+                                        >
+                                            <option value="">Select frequency</option>
+                                            <option value="daily">Daily</option>
+                                            <option value="weekly">Weekly</option>
+                                            <option value="occasionally">Occasionally</option>
+                                            <option value="rarely">Rarely</option>
+                                            <option value="never">Never</option>
+                                        </Field>
+                                        <ErrorMessage name="exerciseFrequency" component="div" className="valid-clr invalid-feedback" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="txt-lbl">How many meals do you eat in a day?</Form.Label>
+                                        <Field
+                                            className="form-control"
+                                            type="number"
+                                            name="mealsPerDay"
+                                            min="1"
+                                        />
+                                        <ErrorMessage name="mealsPerDay" component="div" className="valid-clr invalid-feedback" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="txt-lbl">How would you rate your current diet habit?</Form.Label>
+                                        <Field
+                                            className="form-control"
+                                            type="number"
+                                            name="dietRating"
+                                            min="1"
+                                            max="10"
+                                        />
+                                        <ErrorMessage name="dietRating" component="div" className="valid-clr invalid-feedback" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="txt-lbl">How often do you eat in a restaurant?</Form.Label>
+                                        <Field
+                                            className="form-control"
+                                            as="select"
+                                            name="restaurantFrequency"
+                                        >
+                                            <option value="">Select frequency</option>
+                                            <option value="daily">Daily</option>
+                                            <option value="weekly">Weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                            <option value="rarely">Rarely</option>
+                                        </Field>
+                                        <ErrorMessage name="restaurantFrequency" component="div" className="valid-clr invalid-feedback" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label className="txt-lbl">Vegetarian or Non-vegetarian?</Form.Label>
+                                        <Field
+                                            className="form-control"
+                                            as="select"
+                                            name="vegetarian"
+                                        >
+                                            <option value="">Select option</option>
+                                            <option value="vegetarian">Vegetarian</option>
+                                            <option value="nonvegetarian">Non-vegetarian</option>
+                                        </Field>
+                                        <ErrorMessage name="vegetarian" component="div" className="valid-clr invalid-feedback" />
                                     </Form.Group>
                                     <Button className="btn-google" variant="outline-dark" onClick={onBack}>
                                         Back

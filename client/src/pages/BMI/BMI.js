@@ -13,9 +13,12 @@ const BMI = () => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
+    const height = useSelector((state) => state.user.currentUser.height);
+
+
 
     const [weight, setWeight] = useState('');
-    const [height, setHeight] = useState('');
+    // const [height, setHeight] = useState('');
     const [bmi, setBMI] = useState(null);
 
     const calculateBMI = () => {
@@ -38,7 +41,7 @@ const BMI = () => {
         try {
             const userId = user.currentUser._id;
             // Make a POST request to your backend API to save BMI data
-            const response = await publicRequest.put(`/bmi/${userId}`, { weight, height, bmi });
+            const response = await publicRequest.put(`/bmi/${userId}`, { weight, bmi });
             dispatch(setBMI(response.data.bmi))
         } catch (error) {
             console.error("Error saving BMI data:", error);
@@ -76,23 +79,17 @@ const BMI = () => {
                                         </div>
                                     )}
                                 </div>
-                                <div>
-                                    <label>Weight (kg): </label>
-                                    <input
-                                        type="number"
-                                        value={weight}
-                                        onChange={(e) => setWeight(e.target.value)}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Height (cm): </label>
-                                    <input
-                                        type="number"
-                                        value={height}
-                                        onChange={(e) => setHeight(e.target.value)}
-                                    />
-                                </div>
-                                <button className="btn btn-google" onClick={calculateBMI}>Calculate BMI</button>
+                                <Form>
+                                    <Form.Group controlId="formWeight">
+                                        <Form.Label>Weight (kg)</Form.Label>
+                                        <Form.Control type="number" placeholder="Enter weight" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                                    </Form.Group>
+                                    <Form.Group controlId="formHeight">
+                                        <Form.Label>Height (cm)</Form.Label>
+                                        <Form.Control type="number" placeholder={height} value={height} readOnly />
+                                    </Form.Group>
+                                </Form>
+                                <button className="btn btn-google mt-3" onClick={calculateBMI}>Calculate BMI</button>
                             </div>
                         </div>
                     </Row>
