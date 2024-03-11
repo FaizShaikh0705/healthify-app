@@ -14,12 +14,41 @@ const BMI = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const height = useSelector((state) => state.user.currentUser.height);
-
-
+    const targetWeight1 = useSelector((state) => state.user.currentUser.targetWeight);
+    const [weightDifference, setWeightDifference] = useState(null);
 
     const [weight, setWeight] = useState('');
     // const [height, setHeight] = useState('');
+    const [latestBMI, setLatestBMI] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [bmi, setBMI] = useState(null);
+
+    useEffect(() => {
+        const fetchLatestBMI = async () => {
+            try {
+                const userId = user.currentUser._id;
+                // Make a GET request to fetch the latest BMI data for the user
+                const response = await publicRequest.get(`/users/stats/${userId}`);
+                console.log("bmi", response.data)
+                setLatestBMI(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching latest BMI:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchLatestBMI();
+    }, []);
+
+    useEffect(() => {
+        if (latestBMI && targetWeight1) {
+            const recentWeight = parseFloat(latestBMI.weight);
+            const difference = recentWeight - parseFloat(targetWeight1);
+            setWeightDifference(difference.toFixed(2));
+        }
+    }, [latestBMI, targetWeight1]);
+
 
     const calculateBMI = () => {
         const weightInKg = parseFloat(weight);
@@ -40,9 +69,8 @@ const BMI = () => {
     const saveBMI = async (weight, height, bmi) => {
         try {
             const userId = user.currentUser._id;
-            // Make a POST request to your backend API to save BMI data
-            const response = await publicRequest.put(`/bmi/${userId}`, { weight, bmi });
-            dispatch(setBMI(response.data.bmi))
+            const response = await publicRequest.put(`/users/bmi/${userId}`, { weight, bmi });
+            dispatch(setBMI(response.data.bmi));
         } catch (error) {
             console.error("Error saving BMI data:", error);
         }
@@ -69,12 +97,15 @@ const BMI = () => {
                 <Container>
                     <Row>
                         <div className="col-md-12">
+                            {weightDifference !== null && (
+                                <p className="text grey _24-px">To achieve your taget weight : {weightDifference} kg</p>
+                            )}
                             <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                                 <h1 className="text-center">BMI Calculator</h1>
                                 <div>
                                     {bmi !== null && (
                                         <div>
-                                            <p className="text grey _24-px">Your BMI is: {bmi.toFixed(2)}</p>
+                                            <p className="text grey _24-px">Your BMI is: {bmi}</p>
                                             <p className="text grey _24-px">Interpretation: {interpretBMI()}</p>
                                         </div>
                                     )}
