@@ -196,14 +196,14 @@ router.put("/weightgoal/:id", async (req, res) => {
 
 router.put("/bmi/:id", async (req, res) => {
     try {
-        const { bmi } = req.body;
+        const { weight, bmi } = req.body;
 
         // Optionally, encrypt the address or perform any necessary validation
 
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
             {
-                $set: { bmi },
+                $push: { bmical: { weight, bmi } },
             },
             { new: true }
         );
@@ -213,5 +213,30 @@ router.put("/bmi/:id", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+router.get("/stats/:id", async (req, res) => {
+    try {
+        const userId = req.params.id;
+
+        // Find the user by ID
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Sort the BMI data array by createdAt timestamp in descending order
+        user.bmical.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        const latestBMI = user.bmical[0];
+
+        res.status(200).json(latestBMI);
+    } catch (err) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
 
 export default router

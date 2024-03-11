@@ -44,18 +44,14 @@ const userSchema = new mongoose.Schema(
         targetWeight: {
             contact: String,
         },
-        bmi: {
-            weight: {
-                type: Number,
-            },
-            bmi: {
-                type: Number,
-            },
+        bmical: [{
+            weight: String,
+            bmi: String,
             createdAt: {
                 type: Date,
                 default: Date.now
             }
-        },
+        }],
         exerciseFrequency: {
             type: String,
         },
