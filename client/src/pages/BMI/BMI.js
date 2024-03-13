@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Form, Button, ListGroup } from 'react-bootstrap';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { publicRequest } from "../../requestMethods";
@@ -20,8 +20,25 @@ const BMI = () => {
     const [weight, setWeight] = useState('');
     // const [height, setHeight] = useState('');
     const [latestBMI, setLatestBMI] = useState(null);
+    const [bmiHistory, setBMIHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [bmi, setBMI] = useState(null);
+
+    useEffect(() => {
+        const fetchBMIHistory = async () => {
+            try {
+                const userId = user.currentUser._id;
+                const response = await publicRequest.get(`/users/stats/${userId}`);
+                setBMIHistory(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching BMI history:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchBMIHistory();
+    }, []);
 
     useEffect(() => {
         const fetchLatestBMI = async () => {
@@ -85,8 +102,6 @@ const BMI = () => {
             return 'Normal weight';
         } else if (bmi < 30) {
             return 'Overweight';
-        } else {
-            return 'Obese';
         }
     };
 
@@ -121,6 +136,16 @@ const BMI = () => {
                                     </Form.Group>
                                 </Form>
                                 <button className="btn btn-google mt-3" onClick={calculateBMI}>Calculate BMI</button>
+                            </div>
+                            <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
+                                <h2 className="text-center">BMI History</h2>
+                                <ListGroup>
+                                    {bmiHistory.map((entry, index) => (
+                                        <ListGroup.Item key={index}>
+                                            BMI: {entry.bmi} | Weight: {entry.weight} kg | Date: {new Date(entry.createdAt).toLocaleDateString()}
+                                        </ListGroup.Item>
+                                    ))}
+                                </ListGroup>
                             </div>
                         </div>
                     </Row>

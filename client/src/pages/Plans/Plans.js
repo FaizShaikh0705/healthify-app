@@ -44,11 +44,11 @@ const Plans = () => {
         <>
             <Header />
             <section className="question-section">
+            <h1 className="text-center text-success">Personal Diet Details ({currentUser.healthIssues[0]})</h1>
                 <Container>
                     <Row>
                         <div className="col-md-12">
-                            <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
-                                <h1 className="text-center">Personal Diet Details ({currentUser.healthIssues[0]})</h1>
+                            <div className="signup-box">
                                 {dietPlans.length === 0 ? (
                                     <p>No diet plans found for your profile</p>
                                 ) : (
@@ -58,7 +58,7 @@ const Plans = () => {
                                                 {/* <h3>Type: {dietPlan[1].type}</h3>
                                                 <h3>For: {dietPlan[1].for}</h3> */}
                                                 <h3></h3>
-                                                <Row>
+                                                <Row className='justify-content-center'>
                                                     <Carousel
                                                         prevIcon={<FaChevronLeft />}
                                                         nextIcon={<FaChevronRight />}
@@ -67,7 +67,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Monday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Monday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -83,7 +83,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Tuesday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Tuesday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -99,7 +99,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Wednesday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Wednesday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -115,7 +115,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Thursday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Thursday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -131,7 +131,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Friday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Friday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -147,7 +147,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2 mb-4">
-                                                                    <h4 className='text-center mt-4'>Saturday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Saturday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -163,7 +163,7 @@ const Plans = () => {
                                                         <Carousel.Item>
                                                             <div className='col-lg-10 mx-auto'>
                                                                 <div className="card item shadow-sm mx-2">
-                                                                    <h4 className='text-center mt-4'>Sunday</h4>
+                                                                    <h2 className='text-center text-danger mt-4'>Sunday</h2>
                                                                     <div className="card-body">
                                                                         <ul className='data'>
                                                                             {Object.entries(dietPlan[1].meals).map(([mealType, foods], index) => (
@@ -249,7 +249,7 @@ const Plans = () => {
                                 </> : ""
                             }
 
-                            {currentUser.healthIssues[0] === "Blood Pressure Patient" ?
+                            {currentUser.healthIssues[0] === "Blood Pressure" ?
                                 <>
                                     <div className='text-center my-5'>
                                         <div>
@@ -271,7 +271,7 @@ const Plans = () => {
                                 </> : ""
                             }
 
-                            {currentUser.healthIssues[0] === "Blood Pressure Patient" ?
+                            {currentUser.healthIssues[0] === "Heart Patient" ?
                                 <>
                                     <div className='text-center my-5'>
                                         <div>

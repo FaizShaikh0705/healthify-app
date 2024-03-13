@@ -81,7 +81,7 @@ a {
 }
 
 .btn-primary {
-  background-color: #B8B8FF;
+  background-color: #9381FF;
   border: 1px solid #B8B8FF;
 }
 
@@ -233,4 +233,8 @@ figure.media {
 .drop-nav a.collapsed:after {
   /* content: "\f067"; */
   content: "\2b";
+}
+
+.visually-hidden{
+  display: none !important;
 }

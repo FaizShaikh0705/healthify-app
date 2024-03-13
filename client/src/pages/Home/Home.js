@@ -58,7 +58,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="action">
-                <a href="/plans" className="button-prime btn btn-primary">
+                <a href="/bmi" className="button-prime btn btn-primary">
                   <div className="text-4 text-white">Get Started</div>
                 </a>
               </div>
