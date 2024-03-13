@@ -8,7 +8,7 @@ const dietPlanSchema = new mongoose.Schema({
     },
     for: {
         type: String,
-        enum: ['Diabetes Patient', 'Cholesterol Patient', 'Thyroid Patient'],
+        enum: ['Diabetes Patient', 'Cholesterol Patient', 'Thyroid Patient','Heart Patient','Blood Pressure'],
         // required: true
     },
     meals: {
