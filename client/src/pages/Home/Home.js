@@ -4,6 +4,7 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import IMG1 from '../../assets/Ria-G-p-800.png'
 import IMG2 from '../../assets/CGM-Banner-p-800.png'
+import IMG3 from '../../assets/bmi.png'
 import { useSelector, useDispatch } from 'react-redux';
 import './Home.css'
 
@@ -64,7 +65,7 @@ const Home = () => {
               </div>
             </div>
             <div className="image-container">
-              <img src={IMG1}
+              <img src={IMG3}
                 loading="lazy"
                 width="524"
                 sizes="(max-width: 479px) 90vw, (max-width: 767px) 76vw, (max-width: 991px) 524px, (max-width: 1439px) 38vw, 524px"

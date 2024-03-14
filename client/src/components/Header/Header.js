@@ -23,12 +23,16 @@ const Header = () => {
                     </div>
                     <div>
                         {/* <a href="/bmi" className="button-prime btn btn-primary"> */}
+                        {currentUser.currentUser.targetWeight.lenght > 0 ?
                             <div className="text-4 ">Target Weight : {currentUser.currentUser.targetWeight}</div>
+                            : ""}
                         {/* </a> */}
                     </div>
-                        {/* <a href="/bmi" className="button-prime btn btn-primary"> */}
-                            <div className="text-4 ">Current Weight : {currentUser.currentUser.weight}</div>
-                        {/* </a> */}
+                    {/* <a href="/bmi" className="button-prime btn btn-primary"> */}
+                    {currentUser.currentUser.weight.lenght > 0 ?
+                        <div className="text-4 ">Current Weight : {currentUser.currentUser.weight}</div>
+                        : ""}
+                    {/* </a> */}
                     {currentUser && currentUser.currentUser ? (
                         <NavDropdown title={currentUser.currentUser.userName} id="username" >
                             <NavDropdown.Item onClick={logoutHandler} className="pe-5">
