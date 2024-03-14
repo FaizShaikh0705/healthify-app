@@ -238,5 +238,16 @@ router.get("/stats/:id", async (req, res) => {
 });
 
 
+router.get("/bmical/:id", async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const bmiValues = await User.findById(userId);
+        res.status(200).json(bmiValues);
+    } catch (err) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
 
 export default router
