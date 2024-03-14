@@ -28,8 +28,9 @@ const BMI = () => {
         const fetchBMIHistory = async () => {
             try {
                 const userId = user.currentUser._id;
-                const response = await publicRequest.get(`/users/stats/${userId}`);
-                setBMIHistory(response.data);
+                const response = await publicRequest.get(`/users/bmical/${userId}`);
+                setBMIHistory(response.data.bmical);
+                console.log("bmical", response.data.bmical)
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching BMI history:', error);
@@ -140,9 +141,9 @@ const BMI = () => {
                             <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                                 <h2 className="text-center">BMI History</h2>
                                 <ListGroup>
-                                    {bmiHistory.map((entry, index) => (
+                                    {Object.entries(bmiHistory).sort((a, b) => new Date(b[1].createdAt) - new Date(a[1].createdAt)).slice(0, 10).map((entry, index) => (
                                         <ListGroup.Item key={index}>
-                                            BMI: {entry.bmi} | Weight: {entry.weight} kg | Date: {new Date(entry.createdAt).toLocaleDateString()}
+                                            BMI: {entry[1].bmi} | Weight: {entry[1].weight} kg | Date: {new Date(entry[1].createdAt).toLocaleDateString()}
                                         </ListGroup.Item>
                                     ))}
                                 </ListGroup>

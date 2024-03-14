@@ -64,7 +64,7 @@ function SignUp(props) {
                     <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
                   </div>
                   <div className="form-group">
-                    <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" disabled={isFetching}>Sign up Now</button>
+                    <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" >Sign up Now</button>
                   </div>
                   <div className="or py-3">
                     <h3><span>or</span></h3>
