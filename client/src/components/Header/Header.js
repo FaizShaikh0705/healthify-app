@@ -22,13 +22,13 @@ const Header = () => {
                         <a href='/'> <img src={logo} width="150" alt="icon" /></a>
                     </div>
                     <div>
-                        {/* <a href="/bmi" className="button-prime btn btn-primary">
-                            <div className="text-4 text-white">Target Weight : {currentUser.currentUser.targetWeight}</div>
-                        </a>
-                        <a href="/bmi" className="button-prime btn btn-primary">
-                            <div className="text-4 text-white">Target Weight : {currentUser.currentUser.weight}</div>
-                        </a> */}
+                        {/* <a href="/bmi" className="button-prime btn btn-primary"> */}
+                            <div className="text-4 ">Target Weight : {currentUser.currentUser.targetWeight}</div>
+                        {/* </a> */}
                     </div>
+                        {/* <a href="/bmi" className="button-prime btn btn-primary"> */}
+                            <div className="text-4 ">Current Weight : {currentUser.currentUser.weight}</div>
+                        {/* </a> */}
                     {currentUser && currentUser.currentUser ? (
                         <NavDropdown title={currentUser.currentUser.userName} id="username" >
                             <NavDropdown.Item onClick={logoutHandler} className="pe-5">
