@@ -11,6 +11,10 @@ const dietPlanSchema = new mongoose.Schema({
         enum: ['Diabetes Patient', 'Cholesterol Patient', 'Thyroid Patient','Heart Patient','Blood Pressure'],
         // required: true
     },
+    mealType: {
+        type:String,
+        enum:['vegetarian_meals','non_vegetarian_meals']
+    },
     meals: {
         early_morning: [String],
         breakfast: [String],
