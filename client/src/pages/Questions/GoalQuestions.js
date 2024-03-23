@@ -205,8 +205,8 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                             name="vegetarian"
                                         >
                                             <option value="">Select option</option>
-                                            <option value="vegetarian">Vegetarian</option>
-                                            <option value="nonvegetarian">Non-vegetarian</option>
+                                            <option value="vegetarian_meals">Vegetarian</option>
+                                            <option value="non_vegetarian_meals">Non-vegetarian</option>
                                         </Field>
                                         <ErrorMessage name="vegetarian" component="div" className="valid-clr invalid-feedback" />
                                     </Form.Group>

@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/apiCalls";
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function Login(props) {
 
@@ -14,6 +16,15 @@ function Login(props) {
   const dispatch = useDispatch();
   const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
+  const handleFormSubmit = async (values, actions) => {
+    try {
+      login(dispatch, { email: values.email, password: values.password });
+      alert("You have login successfully");
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      actions.setSubmitting(false);
+    }
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -38,25 +49,34 @@ function Login(props) {
               <div className="col-md-5 col-lg-5">
                 <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                   <h2 className="text-center">Login</h2>
-                  <div>
-                    {error && (
-                      <div style={{ color: 'red' }}>
-                        <p>{error}</p>
-                        <p>{error.code}</p>
-                      </div>
+                  <Formik
+                    initialValues={{ email: '', password: '' }}
+                    validationSchema={Yup.object().shape({
+                      email: Yup.string().email('Invalid email').required('Email is required'),
+                      password: Yup.string().required('Password is required')
+                    })}
+                    onSubmit={handleFormSubmit}
+                  >
+                    {({ isSubmitting }) => (
+                      <Form> {/* Include Form component here */}
+                        <div className="form-group">
+                          <label htmlFor="email">Email address</label>
+                          <Field type="text" className="form-control" id="email" name="email" placeholder="Enter an email" />
+                          <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="password">Password</label>
+                          <Field type="password" className="form-control" id="password" name="password" placeholder="Enter a password" />
+                          <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+                        </div>
+                        <div className="form-group">
+                          <button type="submit" disabled={isSubmitting} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
+                            {isSubmitting ? 'Logging in...' : 'Login Now'}
+                          </button>
+                        </div>
+                      </Form>
                     )}
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input type="text" className="form-control" id="email" name="email" value={email} placeholder="Enter a email" onChange={(event) => setEmail(event.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Enter a password" onChange={(event) => setPassword(event.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <button onClick={handleClick} className="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" >Login Now</button>
-                  </div>
+                  </Formik>
                   <div className="or py-3">
                     <h3><span>or</span></h3>
                   </div>
