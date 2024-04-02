@@ -66,6 +66,7 @@ const userSchema = new mongoose.Schema(
         },
         vegetarian: {
             type: String,
+            enum: ['vegetarian_meals', 'non_vegetarian_meals']
         },
         isAdmin: {
             type: Boolean,
