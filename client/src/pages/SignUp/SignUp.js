@@ -22,7 +22,9 @@ function SignUp(props) {
   const handleFormSubmit = async (values, actions) => {
     try {
       register(dispatch, { username: values.username, password: values.password, email: values.email });
-      alert("You have SignUp successfully");
+      if (currentUser) {
+        alert("You have SignUp successfully");
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       actions.setSubmitting(false);
@@ -50,6 +52,7 @@ function SignUp(props) {
               <div className="col-md-5 col-lg-5">
                 <div className="mt-4 px-5 py-4 bg-white border shadow-lg rounded signup-box">
                   <h2 className="text-center">Sign Up</h2>
+                   {error && <div className="alert alert-danger">{error}</div>}
                   <Formik
                     initialValues={{ username: '', email: '', password: '' }}
                     validationSchema={Yup.object().shape({

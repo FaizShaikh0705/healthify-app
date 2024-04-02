@@ -22,6 +22,7 @@ const Plans = () => {
 
     const [selectedOrder, setSelectedOrder] = useState(null);
     const currentUser = useSelector((state) => state.user.currentUser);
+    console.log(currentUser);
 
     
     useEffect(() => {

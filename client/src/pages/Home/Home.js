@@ -2,9 +2,9 @@ import React from 'react'
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
-import IMG1 from '../../assets/Ria-G-p-800.png'
+import IMG1 from '../../assets/22222.jpg'
 import IMG2 from '../../assets/CGM-Banner-p-800.png'
-import IMG3 from '../../assets/Banner_Feb1-p-800.png'
+import IMG3 from '../../assets/11111.jpg'
 import IMG4 from '../../assets/Snap-Banner-p-800.png'
 import { useSelector, useDispatch } from 'react-redux';
 import './Home.css'
@@ -20,7 +20,7 @@ const Home = () => {
             <div className="image-container">
               <img src={IMG1}
                 loading="lazy"
-                width="524"
+                width="324"
                 sizes="(max-width: 479px) 90vw, (max-width: 767px) 76vw, (max-width: 991px) 524px, (max-width: 1439px) 38vw, 524px"
                 alt=""
                 className="banner-1-2" />

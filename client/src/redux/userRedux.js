@@ -32,9 +32,9 @@ const userSlice = createSlice({
             state.isFetching = false;
             state.currentUser = action.payload;
         },
-        registerFailure: (state) => {
+       registerFailure: (state, action) => {
             state.isFetching = false;
-            state.error = true;
+            state.error = action.payload;
         },
         resetRegistrationError: (state) => {
             state.error = false;

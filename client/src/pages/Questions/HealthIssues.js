@@ -19,6 +19,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
             });
             dispatch(setHealthIssues(response.data.healthIssues));
             console.log(response);
+            payTypSte();
         } catch (error) {
             console.error('Error submitting form:', error);
             actions.setSubmitting(false);
@@ -51,10 +52,10 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                         <h1 className="text-center">Health Issues</h1>
                         <Formik
                             initialValues={{
-                                healthIssues: user.currentUser?.healthIssues || '',
+                                healthIssues: user.currentUser?.healthIssues || 'None',
                             }}
                             validationSchema={Yup.object().shape({
-                                healthIssues: Yup.array().min(1, 'Select at least one health issue.'),
+                                healthIssues: Yup.string().required('Select at least one health issue.'),
                             })}
                             onSubmit={handleFormSubmit}
                         >
@@ -63,6 +64,11 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                     <Form.Group className="mb-3">
                                         <Form.Label className="txt-lbl">Health Issues</Form.Label>
                                         <div className="form-check">
+                                            <ErrorMessage
+                                                name="healthIssues"
+                                                component="div"
+                                                className="valid-clr invalid-feedback"
+                                            />
                                             <Field
                                                 className={`form-check-input ${formik.touched.healthIssues &&
                                                     formik.errors.healthIssues
@@ -85,7 +91,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                               type="radio"
+                                                type="radio"
                                                 name="healthIssues"
                                                 value="Cholesterol Patient"
                                                 id="checkboxCholesterol"
@@ -101,7 +107,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                               type="radio"
+                                                type="radio"
                                                 name="healthIssues"
                                                 value="Thyroid Patient"
                                                 id="checkboxThyroid"
@@ -117,7 +123,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                               type="radio"
+                                                type="radio"
                                                 name="healthIssues"
                                                 value="Blood Pressure"
                                                 id="checkboxBloodPressure"
@@ -133,7 +139,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                               type="radio"
+                                                type="radio"
                                                 name="healthIssues"
                                                 value="Heart Patient"
                                                 id="checkboxHeartPatient"
@@ -144,13 +150,13 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                         </div>
                                         <div className="form-check">
                                             <Field
-                                                className={`form-check-input ${formik.touched.none &&
-                                                    formik.errors.none
+                                                className={`form-check-input ${formik.touched.healthIssues &&
+                                                    formik.errors.healthIssues
                                                     ? 'is-invalid'
                                                     : ''
                                                     }`}
-                                               type="radio"
-                                                name="none"
+                                                type="radio"
+                                                name="healthIssues"
                                                 value="None"
                                                 id="checkboxNone"
                                             />
@@ -158,11 +164,6 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                                 None
                                             </label>
                                         </div>
-                                        <ErrorMessage
-                                            name="healthIssues"
-                                            component="div"
-                                            className="valid-clr invalid-feedback"
-                                        />
                                     </Form.Group>
                                     <Button className="btn-google" variant="outline-dark" onClick={onBack}>
                                         Back
@@ -170,7 +171,7 @@ const HealthIssues = ({ className, onNext, onBack }) => {
                                     <Button
                                         className="btn-google"
                                         variant="outline-dark"
-                                        onClick={() => payTypSte()}
+                                        onClick={formik.handleSubmit}
                                     >
                                         Continue
                                     </Button>

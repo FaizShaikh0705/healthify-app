@@ -23,6 +23,7 @@ const BodyMeasures = ({ className, onNext, onBack }) => {
             dispatch(setHeight(response.data.height));
             dispatch(setAge(response.data.age));
             console.log(response);
+            payTypSte();
         } catch (error) {
             console.error('Error submitting form:', error);
             actions.setSubmitting(false);
@@ -73,8 +74,8 @@ const BodyMeasures = ({ className, onNext, onBack }) => {
                                     height: user.currentUser?.height ? user.currentUser.height : '',
                                     age: user.currentUser?.age ? user.currentUser.age : '',
                                 }}
-                                validationSchema={Yup.object().shape({
-                                    weight: Yup.number().required('Please enter your weight.'),
+                                validationSchema={Yup.object({
+                                    weight: Yup.string().required('Please enter your weight.'),
                                     height: Yup.number().required('Please enter your height.'),
                                     age: Yup.number().required('Please enter your age.'),
                                 })}
@@ -133,7 +134,7 @@ const BodyMeasures = ({ className, onNext, onBack }) => {
                                         <Button className="btn-google" variant="outline-dark" onClick={onBack}>
                                             Back
                                         </Button>
-                                        <Button className="btn-google" variant="outline-dark" onClick={() => payTypSte()}>
+                                        <Button className="btn-google" variant="outline-dark" onClick={formik.handleSubmit}>
                                             Continue
                                         </Button>
                                     </Form>

@@ -33,6 +33,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
             dispatch(setRestaurantFrequency(response.data.restaurantFrequency));
             dispatch(setVegetarian(response.data.vegetarian));
             // onNext();
+            payTypSte();
             alert("Details successfully added");
             window.location.reload();
             history.push('/plans');
@@ -57,6 +58,11 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
 
             dispatch(setWeightGoal(values.weightGoal));
             dispatch(setTargetWeight(values.targetWeight));
+            dispatch(setExerciseFrequency(response.data.weightGoal));
+            dispatch(setMealsPerDay(response.data.mealsPerDay));
+            dispatch(setDietRating(response.data.dietRating));
+            dispatch(setRestaurantFrequency(response.data.restaurantFrequency));
+            dispatch(setVegetarian(response.data.vegetarian));
             // onNext();
             alert("Details successfully added");
             history.push('/plans');
@@ -82,7 +88,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                 restaurantFrequency: '',
                                 vegetarian: '',
                             }}
-                            validationSchema={Yup.object().shape({
+                            validationSchema={Yup.object({
                                 weightGoal: Yup.string().required('Weight goal is required'),
                                 targetWeight: Yup.number().positive('Target weight must be positive').required('Target weight is required'),
                                 exerciseFrequency: Yup.string().required('Exercise frequency is required'),
@@ -100,7 +106,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                         <div>
                                             <div className="form-check form-check-inline">
                                                 <Field
-                                                    className="form-check-input"
+                                                    className={`form-control ${formik.touched.weightGoal && formik.errors.weightGoal ? 'is-invalid' : ''}`}
                                                     type="radio"
                                                     name="weightGoal"
                                                     value="Weight Loss"
@@ -110,7 +116,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                             </div>
                                             <div className="form-check form-check-inline">
                                                 <Field
-                                                    className="form-check-input"
+                                                    className={`form-control ${formik.touched.weightGoal && formik.errors.weightGoal ? 'is-invalid' : ''}`}
                                                     type="radio"
                                                     name="weightGoal"
                                                     value="Weight Gain"
@@ -120,7 +126,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                             </div>
                                             <div className="form-check form-check-inline">
                                                 <Field
-                                                    className="form-check-input"
+                                                    className={`form-control ${formik.touched.weightGoal && formik.errors.weightGoal ? 'is-invalid' : ''}`}
                                                     type="radio"
                                                     name="weightGoal"
                                                     value="Maintenance"
@@ -133,7 +139,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                     <Form.Group className="mb-3">
                                         <Form.Label className="txt-lbl">Target Weight (in kg or lbs)</Form.Label>
                                         <Field
-                                            className={`form-control ${formik.touched.targetWeight && formik.errors.targetWeight ? 'is-invalid' : ''}`}
+                                            className={`form-control ${formik.touched.dietRating && formik.errors.dietRating ? 'is-invalid' : ''}`}
                                             type="text"
                                             name="targetWeight"
                                             id="targetWeight"
@@ -164,7 +170,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                     <Form.Group className="mb-3">
                                         <Form.Label className="txt-lbl">How many meals do you eat in a day?</Form.Label>
                                         <Field
-                                            className="form-control"
+                                            className={`form-control ${formik.touched.mealsPerDay && formik.errors.mealsPerDay ? 'is-invalid' : ''}`}
                                             type="number"
                                             name="mealsPerDay"
                                             min="1"
@@ -174,7 +180,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                     <Form.Group className="mb-3">
                                         <Form.Label className="txt-lbl">How would you rate your current diet habit?</Form.Label>
                                         <Field
-                                            className="form-control"
+                                            className={`form-control ${formik.touched.mealsPerDay && formik.errors.mealsPerDay ? 'is-invalid' : ''}`}
                                             type="number"
                                             name="dietRating"
                                             min="1"
@@ -213,7 +219,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
                                     <Button className="btn-google" variant="outline-dark" onClick={onBack}>
                                         Back
                                     </Button>
-                                    <Button className="btn-google" variant="outline-dark" onClick={() => payTypSte(formik.values)}>
+                                    <Button className="btn-google" variant="outline-dark" onClick={formik.handleSubmit}>
                                         Continue
                                     </Button>
                                 </Form>
