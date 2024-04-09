@@ -35,7 +35,7 @@ const GoalQuestions = ({ className, onNext, onBack }) => {
             // onNext();
             payTypSte();
             alert("Details successfully added");
-            window.location.reload();
+            // window.location.reload();
             history.push('/plans');
         } catch (error) {
             console.error('Error submitting form:', error);

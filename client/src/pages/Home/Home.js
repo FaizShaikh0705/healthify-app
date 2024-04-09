@@ -33,7 +33,7 @@ const Home = () => {
                     <div className="text grey _24-px">#JustHealthify</div>
                     <div className="text grey medium-text _24-px"> with</div>
                   </div>
-                  <div className="text green">AI Fit Food</div>
+                  <div className="text green">Fit Food</div>
                 </div>
               </div>
               <div className="action">
@@ -56,7 +56,7 @@ const Home = () => {
                     <div className="text grey _24-px">#JustHealthify</div>
                     <div className="text grey medium-text _24-px"> with</div>
                   </div>
-                  <div className="text green">AI Fit Food</div>
+                  <div className="text green">Fit Food</div>
                 </div>
               </div>
               <div className="action">
@@ -95,7 +95,7 @@ const Home = () => {
                     <div className="text grey _24-px">#JustHealthify</div>
                     <div className="text grey medium-text _24-px"> with</div>
                   </div>
-                  <div className="text green">AI Fit Food</div>
+                  <div className="text green">Fit Food</div>
                 </div>
               </div>
               <div className="action">
@@ -126,7 +126,7 @@ const Home = () => {
                     <div className="text grey _24-px">#JustHealthify</div>
                     <div className="text grey medium-text _24-px"> with</div>
                   </div>
-                  <div className="text green">AI Fit Food</div>
+                  <div className="text green">Fit Food</div>
                 </div>
               </div>
               <div className="action">
